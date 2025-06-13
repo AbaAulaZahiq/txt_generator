@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text ke File .txt</title>
     <style>
         body {
@@ -30,44 +30,34 @@
             font-size: 1em;
             cursor: pointer;
         }
+    </style>
 </head>
 <body>
     <div class="container">
         <h2>Masukkan Teks untuk Dijadikan File .txt</h2>
-        <form onsubmit="return false;">
-            <input type="text" id="fileName" name="file_name" placeholder="Masukkan nama file"> <br><br>
-            <textarea name="user_text" id="textArea" rows="40" style="width:100%" placeholder="Tulis teks di sini..."></textarea><br><br>
-            <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
-        </form>
+        <input type="text" id="fileName" placeholder="Masukkan nama file">
+        <textarea id="textArea" rows="10" placeholder="Tulis teks di sini..."></textarea>
+        <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
     </div>
 
-
-     <script>
+    <script>
         function downloadText() {
-    let fileName = document.getElementById("fileName").value;
-    const text = document.getElementById("textArea").value;
-    const blob = new Blob([text], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
+            let fileName = document.getElementById("fileName").value.trim();
+            const text = document.getElementById("textArea").value;
+            const blob = new Blob([text], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
 
-    if (!fileName) {
-        fileName = 'hasil_text.txt';
-    } else {
-        fileName += '.txt';
-    }
+            if (!fileName) fileName = 'hasil_text';
+            if (!fileName.endsWith('.txt')) fileName += '.txt';
 
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-
-    document.getElementById("fileName").value = '';
-    document.getElementById("textArea").value = '';
-}
-
-
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
     </script>
 </body>
 </html>
