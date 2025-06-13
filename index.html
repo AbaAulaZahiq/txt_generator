@@ -4,14 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text ke File .txt</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
 </head>
 <body>
-    <h2>Masukkan Teks untuk Dijadikan File .txt</h2>
-    <form onsubmit="return false;">
-    <input type="text" id="fileName" name="file_name" placeholder="Masukkan nama file"> <br><br>
-    <textarea name="user_text" id="textArea" rows="40" style="width:100%" placeholder="Tulis teks di sini..."></textarea><br><br>
-    <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
-</form>
+    <div class="container">
+        <h2>Masukkan Teks untuk Dijadikan File .txt</h2>
+        <form onsubmit="return false;">
+            <input type="text" id="fileName" name="file_name" placeholder="Masukkan nama file"> <br><br>
+            <textarea name="user_text" id="textArea" rows="40" style="width:100%" placeholder="Tulis teks di sini..."></textarea><br><br>
+            <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
+        </form>
+    </div>
 
 
      <script>
