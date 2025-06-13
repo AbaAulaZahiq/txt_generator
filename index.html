@@ -19,25 +19,49 @@
         input[type="text"],
         textarea {
             width: 100%;
-            padding: 10px;
             font-size: 1em;
             margin-bottom: 10px;
             box-sizing: border-box;
+            border: none;
+            outline: none;
+        }
+
+        textarea{
+            resize: none; /* optional: mencegah resize manual */
+            overflow-y: hidden; /* biar gak muncul scrollbar */            
+        }
+
+        input[type='text']{
+            font-size: 25px;
         }
 
         button {
-            padding: 10px 20px;
+            height: 50px;
+            padding: 5px 20px;
             font-size: 1em;
             cursor: pointer;
+        }
+
+        h2{
+            display: inline-block;
+        }
+
+        .box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Masukkan Teks untuk Dijadikan File .txt</h2>
-        <input type="text" id="fileName" placeholder="Masukkan nama file">
-        <textarea id="textArea" rows="50" placeholder="Tulis teks di sini..."></textarea>
-        <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
+        <div class="box">        
+            <h2>Masukkan teks, jadikan .txt</h2>
+            <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
+        </div>
+
+        <input type="text" id="fileName" placeholder="Nama file (opsional)">
+        <textarea id="textArea" placeholder="Tulis teks di sini..."></textarea>
     </div>
 
     <script>
@@ -58,9 +82,17 @@
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
 
-            document.getElementById("fileName").value = '';
             document.getElementById("textArea").value = '';
         }
+
+        function autoResize(el) {
+            el.style.height = "auto"; // reset height
+            el.style.height = el.scrollHeight + "px"; // set sesuai konten
+        }
+
+        const textarea = document.getElementById("textArea")
+        // Inisialisasi saat halaman dimuat
+        window.addEventListener("keyup", () => autoResize(textarea));
     </script>
 </body>
 </html>
