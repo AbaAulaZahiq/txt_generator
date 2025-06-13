@@ -36,7 +36,7 @@
     <div class="container">
         <h2>Masukkan Teks untuk Dijadikan File .txt</h2>
         <input type="text" id="fileName" placeholder="Masukkan nama file">
-        <textarea id="textArea" rows="10" placeholder="Tulis teks di sini..."></textarea>
+        <textarea id="textArea" rows="50" placeholder="Tulis teks di sini..."></textarea>
         <button type="button" onclick="downloadText()">Simpan sebagai .txt</button>
     </div>
 
@@ -57,6 +57,9 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+
+            document.getElementById("fileName").value = '';
+            document.getElementById("textArea").value = '';
         }
     </script>
 </body>
