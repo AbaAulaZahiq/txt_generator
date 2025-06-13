@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text ke File .txt</title>
 </head>
 <body>
@@ -33,6 +34,9 @@
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    document.getElementById("fileName").value = '';
+    document.getElementById("textArea").value = '';
 }
 
 
